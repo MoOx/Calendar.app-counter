@@ -22,26 +22,31 @@ require("fs").readFile("./data.txt", {encoding: "utf-8"}, function(err, data) {
   var firstDate = infinityDate
   var lastDate = 0
 
-  var log = []
+  var lines = [], log = []
   data.forEach(function(datetime, i) {
     datetime = datetime.split("\nLocation")[0].split(" to ")
 
     var date = datetime[0].slice(0, -9)
     var dateMoment = moment(date, dateFormat)
+    var timestamp = dateMoment.unix()
 
-    if (moment(firstDate, dateFormat).unix() > dateMoment.unix()) firstDate = date
-    if (moment(lastDate, dateFormat).unix() < dateMoment.unix()) lastDate = date
+    if (moment(firstDate, dateFormat).unix() > timestamp) firstDate = date
+    if (moment(lastDate, dateFormat).unix() < timestamp) lastDate = date
 
     datetime[0] = datetime[0].slice(-8)
 
     var hours = convertFormattedTimeToInteger(datetime[1]) - convertFormattedTimeToInteger(datetime[0])
-    log.push(date + ": " + hours + " hours done")
+    lines.push({
+      timestamp: timestamp,
+      message: date + ": " + hours + " hours done"
+    })
     totalHours += hours
   })
 
+  lines.sort(function(a, b) {return a.timestamp - b.timestamp})
+
   console.log("\n")
-  log.sort()
-  console.log(log.join("\n"))
+  console.log(lines.map(function(line) { return line.message }).join("\n"))
 
   console.log("\n")
   console.log(label + " time report between " + firstDate + " to " + lastDate)
