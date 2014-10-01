@@ -10,16 +10,13 @@ Doing that you will get something like this in you clip board.
 
 ```
 Test Event
-Scheduled: 03 Jul 2014 10:00:00 to 14:00:00
-Location:
+Scheduled: 03 Jul 2014 10:00 to 14:00
 
 Test Event
-Scheduled: 01 Jul 2014 08:00:00 to 12:00:00
-Location:
+Scheduled: 01 Jul 2014 08:00 to 12:00
 
 Test Event
-Scheduled: 02 Jul 2014 08:30:00 to 15:15:00
-Location:
+Scheduled: 02 Jul 2014 08:30 to 15:15
 ```
 
 _Note: You can see that result are not sorted by date, don't ask me why... But don't worry I take care of that._
