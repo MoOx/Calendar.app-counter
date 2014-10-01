@@ -1,12 +1,8 @@
 {
-  "name": "calendar.app-count.js",
+  "name": "parse-calendar.app-clipboard",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "MoOx <m@moox.io>",
+  "description": "Read, parse, count hours/days for a Calendar.app search list result",
+  "author": "MoOx",
   "license": "MIT",
   "devDependencies": {
     "moment": "^2.6.0"

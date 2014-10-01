@@ -36,8 +36,7 @@ Do you search, select result you want in the list on the right on `Copy` them.
 Then
 
 ```shell
-$ pbpaste > data.txt
-$ node index.js
+$ ./parse-calendar.app-clipboard
 
 01 Jul 2014: 4 hours done
 02 Jul 2014: 6.75 hours done

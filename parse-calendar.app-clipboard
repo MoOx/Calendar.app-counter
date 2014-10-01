@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+pbpaste > data.txt
+node index.js $@
