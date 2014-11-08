@@ -66,7 +66,7 @@ function parseCalendarAppClipboard(options) {
       var hours = convertFormattedTimeToInteger(dates[1].slice(CALENDARAPP_DATE_FORMAT.length + 1)) - convertFormattedTimeToInteger(dates[0].slice(CALENDARAPP_DATE_FORMAT.length + 1))
       lines.push({
         timestamp: timestamp,
-        message: firstDate + ": " + hours + " hours done"
+        message: dates[0] + ": " + hours + " hours done"
       })
       totalHours += hours
     })
