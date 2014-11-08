@@ -2,7 +2,7 @@
   "name": "parse-calendar.app-clipboard",
   "version": "0.0.0",
   "description": "Read, parse, count hours/days for a Calendar.app search list result",
-  "author": "MoOx",
+  "author": "Maxime Thirouin",
   "license": "MIT",
   "dependencies": {
     "moment": "^2.6.0"

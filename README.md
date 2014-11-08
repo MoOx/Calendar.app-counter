@@ -24,7 +24,7 @@ _Note: You can see that result are not sorted by date, don't ask me why... But d
 
 ## Installation
 
-```shell
+```console
 $ git clone https://github.com/MoOx/Calendar.app-counter.git
 $ cd Calendar.app-counter
 $ npm i
@@ -35,7 +35,7 @@ $ npm i
 Do you search, select result you want in the list on the right on `Copy` them.
 Then
 
-```shell
+```console
 $ ./parse-calendar.app-clipboard
 
 01 Jul 2014: 4 hours done
@@ -50,9 +50,4 @@ Total days : 2.11 (7 hours per day)
 
 ---
 
-## Contributing
-
-Please read the file nobody reads (make me lie) [CONTRIBUTING.md](CONTRIBUTING.md).
-Thanks.
-
-## [License](LICENSE-MIT)
+## [License](LICENSE)
