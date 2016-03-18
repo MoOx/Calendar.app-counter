@@ -63,7 +63,7 @@ function parseCalendarAppClipboard(options) {
         }
       }
 
-      var hours = convertFormattedTimeToInteger(dates[1].slice(CALENDARAPP_DATE_FORMAT.length + 1)) - convertFormattedTimeToInteger(dates[0].slice(CALENDARAPP_DATE_FORMAT.length + 1))
+      var hours = ((new Date(dates[1]).getTime()) - (new Date(dates[0]).getTime())) / 1000 / 60 / 60
       lines.push({
         timestamp: timestamp,
         message: dates[0] + ": " + hours + " hours done"
@@ -81,15 +81,6 @@ function parseCalendarAppClipboard(options) {
     console.log("Total hours: " + totalHours)
     console.log("Total days : " + (totalHours / 7).toFixed(2) + " (7 hours per day)")
   })
-}
-
-/**
- * convert formatted time to integer
- * @param {String} time
- */
-function convertFormattedTimeToInteger(time) {
-  time = time.split(":")
-  return parseInt(time[0], 10) + (parseInt(time[1], 10) / 60)
 }
 
 /**
