@@ -11,6 +11,10 @@ var MOMENT_DATE_FORMAT = "D MMM YYYY"
 
 var CALENDARAPP_DATE_FORMAT = "DD MMM YYYY"
 
+function withoutTime(s) {
+  return s.replace(/ [0-9]{2}:[0-9]{2}/, "");
+}
+
 /**
  * read/parse/count hours for Calendar.app search list result
  */
@@ -35,14 +39,19 @@ function parseCalendarAppClipboard(options) {
     var timestamp
     var i
     data.forEach(function(dates, i) {
-      dates = dates.split("\n")[0].split(" to ")
+      dates = dates.replace(/ at /g, " ").split("\n")[0].split(" to ")
       if (verbose) {
         console.log("dates: ", dates)
       }
-
+      
       // normalize 2nd date
+      if (dates[1].includes(", ")) {
+        // remove timezone
+        dates[1] = dates[1].replace(/, [A-Z]+/g, "")
+      }
+      /// only time? => same day as first date
       if (dates[1].length === "XX:xx".length) {
-        dates[1] = dates[0].slice(0, CALENDARAPP_DATE_FORMAT.length + 1) + dates[1]
+        dates[1] = withoutTime(dates[0]) + " " + dates[1]
       }
 
       if (verbose) {
@@ -51,7 +60,7 @@ function parseCalendarAppClipboard(options) {
 
       // update first & last dates
       for (i = 0; i < 2; i++) {
-        var date = dates[i].slice(0, CALENDARAPP_DATE_FORMAT.length)
+        var date = withoutTime(dates[i]);
         days.push(date)
         var dateMoment = moment(dates[i], MOMENT_DATE_FORMAT)
         timestamp = dateMoment.unix()
@@ -63,7 +72,10 @@ function parseCalendarAppClipboard(options) {
         }
       }
 
-      var hours = ((new Date(dates[1]).getTime()) - (new Date(dates[0]).getTime())) / 1000 / 60 / 60
+      var hours = (
+        (new Date(dates[1]).getTime()) -
+        (new Date(dates[0]).getTime())
+      ) / 1000 / 60 / 60;
       lines.push({
         timestamp: timestamp,
         message: dates[0] + ": " + hours + " hours done"
