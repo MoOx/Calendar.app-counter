@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 pbpaste > data.txt
-node index.js $@
+node dist/index.js $@
