@@ -10,7 +10,8 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "lint": "eslint src/**/*.ts",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "run": "./parse-calendar.app-clipboard"
   },
   "dependencies": {
     "moment": "^2.29.4"
